@@ -1,4 +1,4 @@
-# Use sudo nano /usr/sbin/roszed2cam
+# Use sudo nano /usr/sbin/ros/roszed2cam
 # Don't forget to chmod +x to make this file executable!
 
 #!/bin/bash
