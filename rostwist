@@ -1,0 +1,11 @@
+# Use /usr/sbin/ros/rostwist
+
+#!/bin/bash
+source /opt/ros/melodic/setup.bash
+# USE YOUR OWN ROS WORKSPACE DIRECTORY BELOW
+source /ssd/ros_ws/devel/setup.bash
+source /etc/ros/env.sh
+export ROS_HOME=/home/[TODO USERNAME HERE]/.ros
+python3 [PATH TO THIS SCRIPT]/SCX10Twist.py &
+PID=$!
+wait "$PID"
