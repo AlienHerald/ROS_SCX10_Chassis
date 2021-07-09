@@ -1,0 +1,12 @@
+# Use sudo nano /etc/systemd/system/roszed2cam.service
+
+[Unit]
+Requires=roscore.service
+PartOf=roscore.service
+After=NetworkManager.service time-sync.target roscore.service
+[Service]
+Type=simple
+User=[TODO USERNAME HERE]
+ExecStart=/usr/sbin/ros/roszed2cam
+[Install]
+WantedBy=multi-user.target
