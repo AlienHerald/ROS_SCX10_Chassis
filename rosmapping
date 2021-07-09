@@ -1,0 +1,22 @@
+# Use /usr/sbin/ros/rosmapping
+# Don't forget to chmod +x the file after creating it!
+
+#!/bin/bash
+source /opt/ros/melodic/setup.bash
+# USE YOUR OWN ROS WORKSPACE DIRECTORY BELOW
+source /ssd/ros_ws/devel/setup.bash
+source /etc/ros/env.sh
+export ROS_HOME=/home/[TODO USERNAME HERE]/.ros
+roslaunch rtabmap_ros rtabmap.launch \
+    rtabmap_args:="--delete_db_on_start" \
+    rgb_topic:=/zed2/zed_node/rgb/image_rect_color \
+    depth_topic:=/zed2/zed_node/depth/depth_registered \
+    camera_info_topic:=/zed2/zed_node/depth/camera_info \
+    odom_topic:=/zed2/zed_node/odom \
+    visual_odometry:=false \
+    frame_id:=base_link \
+    approx_sync:=false \
+    rgbd_sync:=true \
+    approx_rgbd_sync:=false &
+PID=$!
+wait "$PID"
