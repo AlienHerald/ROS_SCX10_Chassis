@@ -1,0 +1,12 @@
+# Use /etc/systemd/system/rosmapping.service
+
+[Unit]
+Requires=roszed2cam.service
+PartOf=roszed2cam.service
+After=NetworkManager.service time-sync.target roscore.service roszed2cam.service
+[Service]
+Type=simple
+User=[TODO USERNAME HERE]
+ExecStart=/usr/sbin/ros/rosmapping
+[Install]
+WantedBy=multi-user.target
