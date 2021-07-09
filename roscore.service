@@ -1,0 +1,10 @@
+# Use sudo nano /etc/systemd/system/roscore.service
+
+[Unit]
+After=NetworkManager.service time-sync.target
+[Service]
+Type=forking
+User=[TODO USERNAME HERE]
+ExecStart=/bin/bash -c ". /opt/ros/melodic/setup.sh; . /etc/ros/env.sh; roscore & while ! echo exit | nc localhost 11311 > /dev/null; do sleep 1; done"
+[Install]
+WantedBy=multi-user.target
