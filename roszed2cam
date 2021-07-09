@@ -1,0 +1,12 @@
+# Use sudo nano /usr/sbin/roszed2cam
+# Don't forget to chmod +x to make this file executable!
+
+#!/bin/bash
+source /opt/ros/melodic/setup.bash
+# OR USE YOUR OWN ROS WORKSPACE SETUP.BASH
+source /ssd/ros_ws/devel/setup.bash
+source /etc/ros/env.sh
+export ROS_HOME=/home/[TODO USERNAME HERE]/.ros
+roslaunch zed_wrapper zed2.launch &
+PID=$!
+wait "$PID"
